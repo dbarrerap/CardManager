@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/takePicture"
+        android:title="@string/takePicture"
+        android:alphabeticShortcut='f'
+        android:icon="@drawable/camera"
+        android:orderInCategory="1" />
+    <item android:id="@+id/pickGalley"
+        android:title="@string/pickGallery"
+        android:alphabeticShortcut='g'
+        android:icon="@drawable/gallery_alt"
+        android:orderInCategory="2" />
+</menu>

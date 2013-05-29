@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="strArrCardBank">
+        <item>Banco Internacional</item>
+        <item>Banco de Guayaquil</item>
+        <item>Banco Pichincha</item>
+        <item>Banco del Austro</item>
+        <item>Banco del Pacifico</item>
+        <item>Banco Bolivariano</item>
+        <item>Produbanco</item>
+        <item>Otro…</item>
+    </string-array>
+    <string-array name="strArrCardType">
+        <item>Visa</item>
+        <item>MasterCard</item>
+        <item>Otro…</item>
+    </string-array>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Card Manager</string>
+    <string name="card_bank">Banco</string>
+    <string name="card_ccv">CCV</string>
+    <string name="card_debit">Debito</string>
+    <string name="card_intl">Internacional</string>
+    <string name="card_name">Nombre</string>
+    <string name="card_number">Numero de Tarjeta</string>
+    <string name="card_type">Tipo de Tarjeta</string>
+    <string name="card_valid_thru">Fecha de Caducidad</string>
+    <string name="contact_info">dbarrer@uees.edu.ec</string>
+    <string name="contentDescription">Sin Descripcion</string>
+    <string name="creator">David E. Barrera</string>
+    <string name="delete">Eliminar</string>
+    <string name="device_model">Modelo:</string>
+    <string name="device_sdk">SDK:</string>
+    <string name="device_version">Version:</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="noData"></string>
+    <string name="photo_preview">Previsualizacion</string>
+    <string name="pickGallery">Galeria</string>
+    <string name="save">Guardar</string>
+    <string name="takePicture">Tomar Foto</string>
+    <string name="tech_info">Informacion Tecnica</string>
+    <string name="title_activity_card_new">Nueva Tarjeta</string>
+    <string name="title_activity_help">Ayuda e Informacion</string>
+    <string name="title_activity_show_all">Listado</string>
+    <string name="toggle_off">NO</string>
+    <string name="toogle_on">SI</string>
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+</resources>
