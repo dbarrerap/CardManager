@@ -1,3 +1,8 @@
 This file was created by Android Studio (I/O Preview) AI-130.677228 for binding GitHub repository
 
 Un programa sencillo que da la primicia de manejo de objetos y base de datos.
+
+TODO
+_CardEdit.java_
+* Delete from database
+* Update record

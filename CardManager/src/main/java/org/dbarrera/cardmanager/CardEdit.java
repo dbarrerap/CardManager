@@ -3,7 +3,7 @@ package org.dbarrera.cardmanager;
 import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
+//import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -128,6 +128,12 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.u_delete:
+                //Delete from database where card_name = Data.NAME_COL (Should use Data.ID_COL instead of Data.NAME_COL, but that means changing the way to present data.
+            case R.id.button_update:
+                //Update with new data from View
+        }
 
     }
 
