@@ -24,7 +24,6 @@ public class CardHelp extends Activity implements View.OnClickListener {
     }
 
     private void setupWidgets() {
-        // TODO Auto-generated method stub
         sendmail = (ImageButton)findViewById(R.id.imgbtn_email);
         sendmail.setOnClickListener(this);
         device_model = (TextView)findViewById(R.id.lbl_device_model);
