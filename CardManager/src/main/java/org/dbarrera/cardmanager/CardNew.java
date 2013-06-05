@@ -162,7 +162,8 @@ public class CardNew extends Activity implements View.OnClickListener {
                     fos.close();
                     baos.close();
                     MediaStore.Images.Media.insertImage(getContentResolver(), newFile.getAbsolutePath(), newFile.getName(), "Foto");
-                    picPath = dir + fileName;
+                    System.out.println(dir + fileName);
+                    //picPath = String.valueOf(dir + fileName);
                 } catch (Exception e) {
                     Log.e(CardNew.class.getName(), e.getMessage().toString());
                     e.printStackTrace();
@@ -249,15 +250,16 @@ public class CardNew extends Activity implements View.OnClickListener {
         cv.put(Data.CARD_BANK_COL, cdpojo.getBank());
         cv.put(Data.CARD_BANK_POS_COL, cdpojo.getBankPos());
         cv.put(Data.CARD_IMAGE_COL,cdpojo.getImage());
-        try {
+
+        if (dbData != null) {
             affectedRow = dbData.insert(Data.TABLE_NAME, null, cv);
-        } catch (Exception e) {
-            //De haber un problema al ingresar, mostrar al usuario.
-            Log.e(CardNew.class.getName(),"Error ingresando datos en la base: " + e.getMessage().toString());
-            e.printStackTrace();
-            //Toast.makeText(getApplicationContext(), "Hubo un error al ingresar datos.", Toast.LENGTH_SHORT).show();
+        }
+        db.close();
+
+        //Toast.makeText(getApplicationContext(), "Registro #" + affectedRow + " guardado con exito.", Toast.LENGTH_SHORT).show();
+        if (affectedRow >= 0) {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setMessage(e.getMessage().toString())
+            b.setMessage("Registro #" + affectedRow + " guardado con exito.")
                     .setCancelable(false)
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
@@ -267,11 +269,9 @@ public class CardNew extends Activity implements View.OnClickListener {
                     });
             AlertDialog d = b.create();
             d.show();
-        } finally {
-            db.close();
-            //Toast.makeText(getApplicationContext(), "Registro #" + affectedRow + " guardado con exito.", Toast.LENGTH_SHORT).show();
+        } else {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setMessage("Registro #" + affectedRow + " guardado con exito.")
+            b.setMessage("Ha habido un problema almacenando el registro.")
                     .setCancelable(false)
                     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 

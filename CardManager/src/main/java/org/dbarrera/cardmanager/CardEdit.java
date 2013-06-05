@@ -139,7 +139,7 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
 
         Cursor c = null;
         if (dbData != null) {
-            c = dbData.query(Data.TABLE_NAME,null,Data.NAME_COL + " = '" + adapterView.getSelectedItem().toString() + "'",null,null,null,null);
+            c = dbData.query(Data.TABLE_NAME,null,Data.NAME_COL + " = '" + adapterView.getSelectedItem().toString() + "'", null, null, null, null);
         }
 
         assert c != null;
@@ -147,12 +147,12 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
             u_card_number.setText(c.getString(c.getColumnIndex(Data.CARD_NUMBER_COL)));
             u_card_ccv.setText(c.getString(c.getColumnIndex(Data.CARD_CCV_COL)));
             //u_card_type_spinner.setSelection(c.getInt(c.getColumnIndex(Data.CARD_TYPE_POS_COL)));
-            if (c.getString(c.getColumnIndex(Data.CARD_INTL_COL)) == "1"){
+            if (c.getString(c.getColumnIndex(Data.CARD_INTL_COL)).equals("1")){
                 u_toggle_intl.setChecked(true);
             } else {
                 u_toggle_intl.setChecked(false);
             }
-            if (c.getString(c.getColumnIndex(Data.CARD_DEBIT_COL)) == "1"){
+            if (c.getString(c.getColumnIndex(Data.CARD_DEBIT_COL)).equals("1")){
                 u_toggle_debit.setChecked(true);
             } else {
                 u_toggle_debit.setChecked(false);
