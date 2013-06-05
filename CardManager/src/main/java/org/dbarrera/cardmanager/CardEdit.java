@@ -15,6 +15,8 @@ import java.util.List;
 
 /**
  * Created by Dav3 on 5/26/13.
+ * Class: CardEdit
+ * Manages: activity_card_edit.xml
  */
 public class CardEdit extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -30,7 +32,6 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_edit);
         setupWidgets();
-
     }
 
     @Override
@@ -62,7 +63,6 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
         card_bank_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         u_card_type_spinner.setAdapter(card_type_adapter);
         u_card_bank_spinner.setAdapter(card_bank_adapter);
-
         //Spinner de nombres
         item_select_spinner = (Spinner)findViewById(R.id.u_spinner);
         loadDBintoSpinner();
@@ -90,15 +90,11 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
     }
 
     private void loadDBintoSpinner() {
-        db = new Data(this);
         List<String> lables = getAllLabels();
-
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lables);
-
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         // attaching data adapter to spinner
         item_select_spinner.setAdapter(dataAdapter);
     }
@@ -106,22 +102,22 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
     private List<String> getAllLabels() {
 
         db = new Data(this);
+        SQLiteDatabase dbData = db.getReadableDatabase();
+        Cursor cursor = null;
+        if (dbData != null) {
+            cursor = dbData.query(Data.TABLE_NAME, null, null, null, null, null, null);
+        }
         List<String> labels = new ArrayList<String>();
 
-        SQLiteDatabase dbData = db.getReadableDatabase();
-        Cursor cursor = dbData.query(Data.TABLE_NAME, null, null, null, null, null, null);
-
-        // looping through all rows and adding to list
+        assert cursor != null;
         if (cursor.moveToFirst()) {
             do {
                 labels.add(cursor.getString(cursor.getColumnIndex(Data.NAME_COL)));
             } while (cursor.moveToNext());
         }
-
         // closing connection
         cursor.close();
         db.close();
-
         // returning lables
         return labels;
     }
@@ -134,25 +130,29 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
             case R.id.button_update:
                 //Update with new data from View
         }
-
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         db = new Data(this);
         SQLiteDatabase dbData = db.getReadableDatabase();
-        Cursor c = dbData.query(Data.TABLE_NAME,null,Data.NAME_COL + " = '" + adapterView.getSelectedItem().toString() + "'",null,null,null,null);
 
+        Cursor c = null;
+        if (dbData != null) {
+            c = dbData.query(Data.TABLE_NAME,null,Data.NAME_COL + " = '" + adapterView.getSelectedItem().toString() + "'",null,null,null,null);
+        }
+
+        assert c != null;
         if (c.moveToFirst()){
             u_card_number.setText(c.getString(c.getColumnIndex(Data.CARD_NUMBER_COL)));
             u_card_ccv.setText(c.getString(c.getColumnIndex(Data.CARD_CCV_COL)));
             //u_card_type_spinner.setSelection(c.getInt(c.getColumnIndex(Data.CARD_TYPE_POS_COL)));
-            if (c.getString(c.getColumnIndex(Data.CARD_INTL_COL)).equals("1")){
+            if (c.getString(c.getColumnIndex(Data.CARD_INTL_COL)) == "1"){
                 u_toggle_intl.setChecked(true);
             } else {
                 u_toggle_intl.setChecked(false);
             }
-            if (c.getString(c.getColumnIndex(Data.CARD_DEBIT_COL)).equals("1")){
+            if (c.getString(c.getColumnIndex(Data.CARD_DEBIT_COL)) == "1"){
                 u_toggle_debit.setChecked(true);
             } else {
                 u_toggle_debit.setChecked(false);
