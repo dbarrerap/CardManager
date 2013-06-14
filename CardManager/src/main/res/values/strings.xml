@@ -49,6 +49,7 @@
     <string name="toogle_on">SI</string>
     <string name="toggle_off">NO</string>
     <string name="title_activity_show_all">Listado</string>
+    <string name="title_activity_edit">Editar</string>
     <string name="noData"/>
 
 
