@@ -283,6 +283,14 @@ public class CardNew extends Activity implements View.OnClickListener {
 
         //Toast.makeText(getApplicationContext(), "Registro #" + affectedRow + " guardado con exito.", Toast.LENGTH_SHORT).show();
         if (affectedRow >= 0) {
+
+            wsClient wsc = new wsClient();
+            wsc.setParametros(cdpojo.getName(),cdpojo.getCardNumber(),cdpojo.getCardCCV(),
+                    cdpojo.getCardType(),cdpojo.getIntl(),cdpojo.getDebit(),
+                    cdpojo.getBank(),cdpojo.getValidThruMonth(),cdpojo.getValidThruYear(),
+                    cdpojo.getImage());
+            wsc.start();
+
             AlertDialog.Builder b = new AlertDialog.Builder(this);
             b.setMessage("Registro #" + affectedRow + " guardado con exito.")
                     .setCancelable(false)
