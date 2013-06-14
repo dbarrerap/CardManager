@@ -117,10 +117,11 @@ public final class R {
         public static final int takePicture=0x7f060016;
         public static final int tech_info=0x7f060017;
         public static final int title_activity_card_new=0x7f060018;
-        public static final int title_activity_help=0x7f060019;
-        public static final int title_activity_show_all=0x7f06001a;
-        public static final int toggle_off=0x7f06001b;
-        public static final int toogle_on=0x7f06001c;
+        public static final int title_activity_edit=0x7f060019;
+        public static final int title_activity_help=0x7f06001a;
+        public static final int title_activity_show_all=0x7f06001b;
+        public static final int toggle_off=0x7f06001c;
+        public static final int toogle_on=0x7f06001d;
     }
     public static final class style {
         /** 

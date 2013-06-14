@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Dav3 on 6/13/13.
  */
 public class wsClient extends Thread {
-    private static final String url = "http://10.0.2.2:8888/cardmanager/index.php";
+    private static final String url = "http://10.0.2.2/cardmanager/index.php";
 
     private List<NameValuePair> parametros = null;
 
@@ -42,7 +42,7 @@ public class wsClient extends Thread {
         try {
             JSONArray jsonArray = json.getJSONArray("exito");
             if (jsonArray != null){
-
+                Log.d(wsClient.class.getName(),"Success! Data has been saved.");
             } else {
                 Log.d(wsClient.class.getName(),"Error! Parsing could not be made.");
             }

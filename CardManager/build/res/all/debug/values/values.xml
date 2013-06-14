@@ -38,13 +38,14 @@
     <string name="device_sdk">SDK:</string>
     <string name="device_version">Version:</string>
     <string name="hello_world">Hello world!</string>
-    <string name="noData"></string>
+    <string name="noData" />
     <string name="photo_preview">Previsualizacion</string>
     <string name="pickGallery">Galeria</string>
     <string name="save">Guardar</string>
     <string name="takePicture">Tomar Foto</string>
     <string name="tech_info">Informacion Tecnica</string>
     <string name="title_activity_card_new">Nueva Tarjeta</string>
+    <string name="title_activity_edit">Editar</string>
     <string name="title_activity_help">Ayuda e Informacion</string>
     <string name="title_activity_show_all">Listado</string>
     <string name="toggle_off">NO</string>
