@@ -33,6 +33,34 @@ import java.util.Locale;
 
 /**
  * Created by Dav3 on 5/23/13.
+ *
+ * CardNew Activity Code
+ *
+ * Variables:
+ *  Spinner card_type_spin, card_bank_spin
+ *  DatePicker valid_thru
+ *  EditText txt_card_name, txt_card_number, txt_card_ccv
+ *  ImageView picPreview
+ *  ToggleButton toggle_intl, toggle_debit
+ *  Button save
+ *  private static final int CAMERA_PIC_REQUEST
+ *  private static final int GALLERY_PIC_REQUEST
+ *  String picPath
+ *
+ * Methods:
+ *  onCreate()
+ *
+ *  Override:
+ *   onCreateOptionsMenu()
+ *   onActivityResult()
+ *   onMenuItemSelected()
+ *   onClick()
+ *
+ *  Custom:
+ *   setupWidgets()
+ *   ocultarElementoDatePicker()
+ *   insertData()
+ *   allFieldFilled()
  */
 public class CardNew extends Activity implements View.OnClickListener {
 
@@ -44,7 +72,6 @@ public class CardNew extends Activity implements View.OnClickListener {
     Button save;
     private static final int CAMERA_PIC_REQUEST = 1337;
     private static final int GALLERY_PIC_REQUEST = 1338;
-    private ArrayList<cardDetailsPOJO> dataToSave;
     String picPath = "null";
 
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +82,8 @@ public class CardNew extends Activity implements View.OnClickListener {
 		 * Bug: Al hacer cambio de orientacion, el layout se destruye y se vuelve a crear,
 		 *  por ende creando todos los objetos desde cero.
 		 * Workaround: Fijar la orientacion de este layout via setRequestedOrientation()
-		 * Observacion: Recomiendan getLastNonConfigurationInstance(), pero el SDK dice que es deprecated.
+		 * Observacion: Recomiendan getLastNonConfigurationInstance() para pasar los estados de los views
+		 *  de una destruccion a una creacion, pero el SDK dice que es deprecated.
 		 * Documentacion: This method was deprecated in API level 13.
 		 *  Use the new Fragment API setRetainInstance(boolean) instead; this is also available
 		 *  on older platforms through the Android compatibility package.
@@ -80,8 +108,6 @@ public class CardNew extends Activity implements View.OnClickListener {
         }
         save = (Button)findViewById(R.id.button_save);
         save.setOnClickListener(this);
-
-        dataToSave = new ArrayList<cardDetailsPOJO>();
 
         /*
          * Bug: La IDE de Android Studio aun no permite referenciar android:entries con @array/<name>
@@ -211,12 +237,11 @@ public class CardNew extends Activity implements View.OnClickListener {
                 } else {
                     cdpojo.setDebit("0");
                 }
-                cdpojo.setValidThruMonth(String.valueOf(valid_thru.getMonth() + 1));
-                cdpojo.setValidThruYear(String.valueOf(valid_thru.getYear()));
                 cdpojo.setBank(card_bank_spin.getSelectedItem().toString());
                 cdpojo.setBankPos(card_bank_spin.getSelectedItemPosition());
+                cdpojo.setValidThruMonth(String.valueOf(valid_thru.getMonth() + 1));
+                cdpojo.setValidThruYear(String.valueOf(valid_thru.getYear()));
                 cdpojo.setImage(picPath);
-                dataToSave.add(cdpojo);
                 //Toast.makeText(getApplicationContext(), "" + toggle_debit.getText().toString(), Toast.LENGTH_SHORT).show();
                 insertData(cdpojo);
             } else {

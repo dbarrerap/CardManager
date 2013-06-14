@@ -1,8 +1,42 @@
 This file was created by Android Studio (I/O Preview) AI-130.677228 for binding GitHub repository
 
-Un programa sencillo que da la primicia de manejo de objetos y base de datos.
+--== Creacion con Android Developer Toolkit ==--
 
-*TO DO*
-_CardEdit.java_
-* Delete from database
-* Update record
+v0.1
+Creacion de pantallas (layout) del programa:
+* activity_card_menu
+* activity_card_new
+
+v0.2
+Creacion de pantallas:
+* activity_card_help
+* activity_card_show
+Codificacion de pantallas:
+* CardHelp.java
+
+v0.3
+Codificacion de pantallas:
+* CardNew.java
+
+v0.4
+Creacion de clase para ingreso de data en base:
+* Data.java
+* cardDetailsPOJO.java
+Modificacion de codigo:
+* CardNew.java
+
+--== Migracion a Android Studio ==--
+
+v0.5
+Modificacion de pantallas:
+* activity_card_show
+Codificacion de pantallas:
+* CardShow.java
+Creacion de pantallas adicionales:
+* list_item
+
+v0.6
+Creacion de pantallas:
+* activity_card_edit
+Codificacion de pantallas:
+* CardEdit.java

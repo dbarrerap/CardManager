@@ -27,6 +27,7 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
     EditText u_card_number, u_card_ccv;
     ImageView u_picPreview;
     ToggleButton u_toggle_intl, u_toggle_debit;
+    cardDetailsPOJO cd;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,25 +145,41 @@ public class CardEdit extends Activity implements View.OnClickListener, AdapterV
 
         assert c != null;
         if (c.moveToFirst()){
-            u_card_number.setText(c.getString(c.getColumnIndex(Data.CARD_NUMBER_COL)));
-            u_card_ccv.setText(c.getString(c.getColumnIndex(Data.CARD_CCV_COL)));
-            //u_card_type_spinner.setSelection(c.getInt(c.getColumnIndex(Data.CARD_TYPE_POS_COL)));
-            if (c.getString(c.getColumnIndex(Data.CARD_INTL_COL)).equals("1")){
-                u_toggle_intl.setChecked(true);
-            } else {
-                u_toggle_intl.setChecked(false);
-            }
-            if (c.getString(c.getColumnIndex(Data.CARD_DEBIT_COL)).equals("1")){
-                u_toggle_debit.setChecked(true);
-            } else {
-                u_toggle_debit.setChecked(false);
-            }
-            //u_card_bank_spinner.setSelection(c.getInt(c.getColumnIndex(Data.CARD_BANK_POS_COL)));
-            //No se puede setear fecha?
-            /*if  (c.getString(c.getColumnIndex(Data.CARD_IMAGE_COL)) != "null"){
-                u_picPreview.setImageURI(Uri.parse("file://" + c.getString(c.getColumnIndex(Data.CARD_IMAGE_COL))));
-            }*/
+            cd = new cardDetailsPOJO();
+            cd.setName(c.getString(c.getColumnIndex(Data.NAME_COL)));
+            cd.setCardNumber(c.getString(c.getColumnIndex(Data.CARD_NUMBER_COL)));
+            cd.setCardCCV(c.getString(c.getColumnIndex(Data.CARD_CCV_COL)));
+            cd.setCardType(c.getString(c.getColumnIndex(Data.CARD_TYPE_COL)));
+            cd.setCardTypePos(c.getInt(c.getColumnIndex(Data.CARD_TYPE_POS_COL)));
+            cd.setIntl(c.getString(c.getColumnIndex(Data.CARD_INTL_COL)));
+            cd.setDebit(c.getString(c.getColumnIndex(Data.CARD_DEBIT_COL)));
+            cd.setBank(c.getString(c.getColumnIndex(Data.CARD_BANK_COL)));
+            cd.setBankPos(c.getInt(c.getColumnIndex(Data.CARD_BANK_POS_COL)));
+            cd.setValidThruMonth(c.getString(c.getColumnIndex(Data.CARD_VALIDTHRU_MONTH_COL)));
+            cd.setValidThruYear(c.getString(c.getColumnIndex(Data.CARD_VALIDTHRU_YEAR_COL)));
+            cd.setImage(c.getString(c.getColumnIndex(Data.CARD_IMAGE_COL)));
+            loadIntoView();
+
         }
+    }
+
+    private void loadIntoView() {
+        u_card_number.setText(cd.getCardNumber());
+        u_card_ccv.setText(cd.getCardCCV());
+        //Set CardType spinner position with cd.getCardTypePos
+        if (cd.getIntl().equals("1")){
+            u_toggle_intl.setChecked(true);
+        } else {
+            u_toggle_intl.setChecked(false);
+        }
+        if (cd.getDebit().equals("1")){
+            u_toggle_debit.setChecked(true);
+        } else {
+            u_toggle_debit.setChecked(false);
+        }
+        //Set CardBank spinner position with cd.getBankPos
+        //Set ValidThru date with cd.getValidThru, but there is no methos to set date
+        //Set ImageView with cd.getImage
     }
 
     @Override
