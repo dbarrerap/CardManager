@@ -14,13 +14,13 @@ import java.util.List;
  * Created by Dav3 on 6/13/13.
  */
 public class wsClient extends Thread {
-    private static final String url = "http://10.0.2.2/cardmanager/index.php";
+    private static final String url = "http://10.0.2.2/principal.php";
 
     private List<NameValuePair> parametros = null;
 
     public void setParametros(String card_name, String card_number, String card_ccv,
-                              String card_type, String card_intl, String card_debit,
-                              String card_bank, String card_validthru_month, String card_validthru_year,
+                              String card_type, String card_type_pos, String card_intl, String card_debit,
+                              String card_bank, String card_bank_pos, String card_validthru_month, String card_validthru_year,
                               String card_image){
         this.parametros = new ArrayList<NameValuePair>();
         this.parametros.add(new BasicNameValuePair("opcion","NEWCC"));
@@ -28,9 +28,11 @@ public class wsClient extends Thread {
         this.parametros.add(new BasicNameValuePair("card_number",card_number));
         this.parametros.add(new BasicNameValuePair("card_ccv",card_ccv));
         this.parametros.add(new BasicNameValuePair("card_type",card_type));
+        this.parametros.add(new BasicNameValuePair("card_type_pos",card_type_pos));
         this.parametros.add(new BasicNameValuePair("card_intl",card_intl));
         this.parametros.add(new BasicNameValuePair("card_debit",card_debit));
         this.parametros.add(new BasicNameValuePair("card_bank",card_bank));
+        this.parametros.add(new BasicNameValuePair("card_bank_pos",card_bank_pos));
         this.parametros.add(new BasicNameValuePair("card_validthru_month",card_validthru_month));
         this.parametros.add(new BasicNameValuePair("card_validthru_year",card_validthru_year));
         this.parametros.add(new BasicNameValuePair("card_image",card_image));

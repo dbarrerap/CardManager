@@ -286,8 +286,8 @@ public class CardNew extends Activity implements View.OnClickListener {
 
             wsClient wsc = new wsClient();
             wsc.setParametros(cdpojo.getName(),cdpojo.getCardNumber(),cdpojo.getCardCCV(),
-                    cdpojo.getCardType(),cdpojo.getIntl(),cdpojo.getDebit(),
-                    cdpojo.getBank(),cdpojo.getValidThruMonth(),cdpojo.getValidThruYear(),
+                    cdpojo.getCardType(), String.valueOf(cdpojo.getCardTypePos()),cdpojo.getIntl(),cdpojo.getDebit(),
+                    cdpojo.getBank(), String.valueOf(cdpojo.getBankPos()),cdpojo.getValidThruMonth(),cdpojo.getValidThruYear(),
                     cdpojo.getImage());
             wsc.start();
 

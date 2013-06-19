@@ -38,7 +38,7 @@
     <string name="device_sdk">SDK:</string>
     <string name="device_version">Version:</string>
     <string name="hello_world">Hello world!</string>
-    <string name="noData" />
+    <string name="noData"></string>
     <string name="photo_preview">Previsualizacion</string>
     <string name="pickGallery">Galeria</string>
     <string name="save">Guardar</string>
